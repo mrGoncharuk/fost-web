@@ -99,6 +99,8 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
     try {
 
         std::pair<boost::shared_ptr<fostlib::mime>, int> response;
+        boost::shared_ptr<fostlib::mime> *first = new (boost::shared_ptr<fostlib::mime> );
+        response.first = *first;
         std::cout << "try view::execute "<< std::endl;
         if (configuration.isobject()) {
             std::cout << "try find_view for isobject  configuration: "<< configuration << std::endl;  
@@ -107,27 +109,29 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
             std::cout << "find_view done "<< configuration << std::endl; 
             response = view_for(view_fn.first)(
                     view_fn.second, path, request, host);
-            std::cout << "view_for done in isobject " << configuration << std::endl;
+            std::cout << "view_for done in isobject " <<  std::endl;
         } else {
-            std::cout << "try else view::execute "<< std::endl;
+            std::cout << "try else view::execute " << std::endl;
             auto view_name = coerce<string>(configuration);
             std::cout << "try find_view for else configuration: "<< configuration << std::endl;
             auto to_exec = find_view(view_name);
             std::cout << "response in else view::execute "<< std::endl;
             response = view_for(to_exec.first)(
                     to_exec.second, path, request, host);
-            std::cout << "view_for done in else "<< configuration << std::endl;
+            std::cout << "view_for done in else "<< std::endl;
         }
         std::cout << "try Preserve Fost-Request-ID from request"<< std::endl;
 
         if (response.first == nullptr) {
             std::cout << "nullptr at responce pair for "<< path << " " <<  " " <<  host  << std::endl;
+            boost::shared_ptr<fostlib::mime> *f1rst = new (boost::shared_ptr<fostlib::mime> );
+            response.first = *f1rst;
             return  response;
         }
         // Preserve Fost-Request-ID from request
-        response.first->headers().set(
-                "Fost-Request-ID",
-                request.data()->headers()["Fost-Request-ID"]);
+        // response.first->headers().set(
+        //         "Fost-Request-ID",
+        //         request.data()->headers()["Fost-Request-ID"]);
         std::cout << "try return responce"<< std::endl;
         return response;
     } catch (fostlib::exceptions::exception &e) {
