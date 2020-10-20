@@ -1,0 +1,459 @@
+root@84e7d1e9b52e:/home/mm# ./fost-webserver -h 0 -p 35439 /usr/src/views/logging.json /usr/src/views/odin-webserver.json /usr/src/views/odin-views.json /usr/src/views/app-views.json /usr/src/views/app.register.json -m /etc/fost-webserver/mime-types.json /etc/fost-webserver/log-show-all.json &
+[1] 75847
+root@84e7d1e9b52e:/home/mm# Threaded HTTP server
+Copyright (C) 2002-2020 Red Anchor Trading Co. Ltd.
+Loading config "/usr/src/views/logging.json"
+Loading config "/usr/src/views/odin-webserver.json"
+Loading config "/usr/src/views/odin-views.json"
+Loading config "/usr/src/views/app-views.json"
+Loading config "/usr/src/views/app.register.json"
+Loading config "/etc/fost-webserver/log-show-all.json"
+Loading code plugin "fostgres"
+Loading code plugin "odin-views"
+Loading code plugin "fost-sinks"
+2020-10-18T10:10:24.016984Z info fost/base/core
+                            Started a global sink configuration
+{
+    "configuration" : {
+        "sinks" : [
+            {
+                "configuration" : {
+                    "color" : true,
+                    "log-level" : 0
+                },
+                "name" : "stdout"
+            },
+            {
+                "name" : "panoptes"
+            }
+        ]
+    },
+    "sinks" : [
+        "stdout",
+        "panoptes"
+    ]
+}
+
+
+Answering requests on http://0:35439/
+
+root@84e7d1e9b52e:/home/mm# curl -vvo /dev/null --header "Content-Type: application/json" --header "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnZpY3R1cyIsImlzcyI6Imh0dHBzOi8vYXV0aC5ob3Qtbm93LmNvbS9hcHAvaW52aWN0dXMiLCJleHAiOjI2NDg2Mzg3NTR9.X0B1IVSv-qSMUb3qwG-2SQrRBFwe_fwQ43yZ-Hhsa0Q" --data '{"installation_id":"instl_637377516592310266"}' --request PUT http://0.0.0.0:35439/odin/ 
+*   Trying 0.0.0.0...
+* TCP_NODELAY set
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to 0.0.0.0 (127.0.0.1) port 35439 (#0)
+> PUT /odin/ HTTP/1.1
+> Host: 0.0.0.0:35439
+> User-Agent: curl/7.58.0
+> Accept: */*
+> Content-Type: application/json
+> Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnZpY3R1cyIsImlzcyI6Imh0dHBzOi8vYXV0aC5ob3Qtbm93LmNvbS9hcHAvaW52aWN0dXMiLCJleHAiOjI2NDg2Mzg3NTR9.X0B1IVSv-qSMUb3qwG-2SQrRBFwe_fwQ43yZ-Hhsa0Q
+> Content-Length: 46
+> 
+} [46 bytes data]
+* upload completely sent off: 46 out of 46 bytes
+sanity check 
+parse config 
+parse done 
+try  
+view config 
+path:  odin/ view_conf "root"
+
+try view::execute 
+try else view::execute 
+try find_view for else configuration: "root"
+
+response in else view::execute 
+try view::execute 
+try find_view for isobject  configuration: {
+    "configuration" : {
+        "configuration" : {
+            "" : "redirect",
+            "favicon.ico" : "fost.response.404",
+            "odin/" : "odin",
+            "translations/" : "translations"
+        },
+        "headers" : {
+            "__pgdsn" : {
+                "dbname" : "auth",
+                "host" : "hotnow-auth-db",
+                "password" : "example-password",
+                "port" : "5432",
+                "user" : "hotnow"
+            }
+        },
+        "view" : "fost.view.pathprefix"
+    },
+    "view" : "fost.middleware.request"
+}
+
+find_view done {
+    "configuration" : {
+        "configuration" : {
+            "" : "redirect",
+            "favicon.ico" : "fost.response.404",
+            "odin/" : "odin",
+            "translations/" : "translations"
+        },
+        "headers" : {
+            "__pgdsn" : {
+                "dbname" : "auth",
+                "host" : "hotnow-auth-db",
+                "password" : "example-password",
+                "port" : "5432",
+                "user" : "hotnow"
+            }
+        },
+        "view" : "fost.view.pathprefix"
+    },
+    "view" : "fost.middleware.request"
+}
+
+try view::execute 
+try find_view for isobject  configuration: {
+    "configuration" : {
+        "" : "redirect",
+        "favicon.ico" : "fost.response.404",
+        "odin/" : "odin",
+        "translations/" : "translations"
+    },
+    "headers" : {
+        "__pgdsn" : {
+            "dbname" : "auth",
+            "host" : "hotnow-auth-db",
+            "password" : "example-password",
+            "port" : "5432",
+            "user" : "hotnow"
+        }
+    },
+    "view" : "fost.view.pathprefix"
+}
+
+find_view done {
+    "configuration" : {
+        "" : "redirect",
+        "favicon.ico" : "fost.response.404",
+        "odin/" : "odin",
+        "translations/" : "translations"
+    },
+    "headers" : {
+        "__pgdsn" : {
+            "dbname" : "auth",
+            "host" : "hotnow-auth-db",
+            "password" : "example-password",
+            "port" : "5432",
+            "user" : "hotnow"
+        }
+    },
+    "view" : "fost.view.pathprefix"
+}
+
+try view::execute 
+try else view::execute 
+try find_view for else configuration: "odin"
+
+response in else view::execute 
+try view::execute 
+try else view::execute 
+try find_view for else configuration: "odin/unsecure/sql"
+
+response in else view::execute 
+2020-10-18T10:10:43.340254Z debug fostgres
+                            Executing SQL command
+{
+    "command" : "SELECT 'odin/handshake'::text AS \"@context\",\n                        './api/login/'::text AS odin__login,\n                        './api/renew-jwt/'::text AS odin__renew_jwt,\n                        './api/facebook/login/'::text AS odin__facebook__login,\n                        './api/google/login/'::text AS odin__google__login,\n                        './api/register/'::text AS odin__register,\n                        './api/forgotten-password/'::text AS odin__forgotten_password,\n                        './app/register-installation/'::text AS app__register_installation,\n                        './api/link-account/'::text AS odin__link_account,\n                        './app/login/:app_id/'::text AS app__login,\n                        './app/verify/:app_id/'::text AS app__verify,\n                        './app/register/'::text AS app__register,\n                        './app/api/login/'::text AS app__api__login,\n                        './app/api/renew-jwt/'::text AS app__api__renew_jwt",
+    "dsn" : {
+        "dbname" : "auth",
+        "host" : "hotnow-auth-db",
+        "password" : "example-password",
+        "user" : "hotnow"
+    }
+}
+
+view_for done in else "odin/unsecure/sql"
+
+try Preserve Fost-Request-ID from request
+try return responce
+view_for done in else "odin"
+
+try Preserve Fost-Request-ID from request
+try return responce
+view_for done in isobject {
+    "configuration" : {
+        "" : "redirect",
+        "favicon.ico" : "fost.response.404",
+        "odin/" : "odin",
+        "translations/" : "translations"
+    },
+    "headers" : {
+        "__pgdsn" : {
+            "dbname" : "auth",
+            "host" : "hotnow-auth-db",
+            "password" : "example-password",
+            "port" : "5432",
+            "user" : "hotnow"
+        }
+    },
+    "view" : "fost.view.pathprefix"
+}
+
+try Preserve Fost-Request-ID from request
+try return responce
+view_for done in isobject {
+    "configuration" : {
+        "configuration" : {
+            "" : "redirect",
+            "favicon.ico" : "fost.response.404",
+            "odin/" : "odin",
+            "translations/" : "translations"
+        },
+        "headers" : {
+            "__pgdsn" : {
+                "dbname" : "auth",
+                "host" : "hotnow-auth-db",
+                "password" : "example-password",
+                "port" : "5432",
+                "user" : "hotnow"
+            }
+        },
+        "view" : "fost.view.pathprefix"
+    },
+    "view" : "fost.middleware.request"
+}
+
+try Preserve Fost-Request-ID from request
+try return responce
+2020-10-18T10:10:43.393785Z ok fost/web/urlhandler/logger
+{
+    "request" : {
+        "bytes" : 46,
+        "headers" : {
+            "Accept" : "*/*",
+            "Authorization" : "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnZpY3R1cyIsImlzcyI6Imh0dHBzOi8vYXV0aC5ob3Qtbm93LmNvbS9hcHAvaW52aWN0dXMiLCJleHAiOjI2NDg2Mzg3NTR9.X0B1IVSv-qSMUb3qwG-2SQrRBFwe_fwQ43yZ-Hhsa0Q",
+            "Content-Length" : "46",
+            "Content-Type" : "application/json",
+            "Fost-Request-ID" : "1603015843-1C6zySUdJwuhkeC94qukCdQ2nlp8tBB0",
+            "Host" : "0.0.0.0:35439",
+            "User-Agent" : "curl/7.58.0",
+            "__pgdsn" : "; dbname=\"auth\"; host=\"hotnow-auth-db\"; password=\"example-password\"; port=\"5432\"; user=\"hotnow\"",
+            "__remote_addr" : "127.0.0.1"
+        },
+        "method" : "PUT",
+        "path" : "/odin/"
+    },
+    "response" : {
+        "headers" : {
+            "Content-Length" : "771",
+            "Content-Transfer-Encoding" : "8bit",
+            "Content-Type" : "application/json; charset=\"utf-8\"",
+            "Fost-Request-ID" : "1603015843-1C6zySUdJwuhkeC94qukCdQ2nlp8tBB0"
+        },
+        "status" : 200
+    },
+    "time" : {
+        "seconds" : 0.088304893999999995
+    }
+}
+
+view_for done in else "root"
+
+try Preserve Fost-Request-ID from request
+try return responce
+view execute done  
+send response 
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Length: 771
+< Content-Transfer-Encoding: 8bit
+< Content-Type: application/json; charset="utf-8"
+< Fost-Request-ID: 1603015843-1C6zySUdJwuhkeC94qukCdQ2nlp8tBB0
+< 
+{ [771 bytes data]
+100   817  100   771  100    46   4236    252 --:--:-- --:--:-- --:--:--  5106
+* Closing connection 0
+root@84e7d1e9b52e:/home/mm# try done 
+url handler done 
+
+root@84e7d1e9b52e:/home/mm# curl -vvo /dev/null --header "Content-Type: application/json" --header "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnZpY3R1cyIsImlzcyI6Imh0dHBzOi8vYXV0aC5ob3Qtbm93LmNvbS9hcHAvaW52aWN0dXMiLCJleHAiOjI2NDg2Mzg3NTR9.X0B1IVSv-qSMUb3qwG-2SQrRBFwe_fwQ43yZ-Hhsa0Q" --data '{"installation_id":"instl_637377516592310266"}' --request POST http://0.0.0.0:35439/odin/ 
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 0.0.0.0...
+* TCP_NODELAY set
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to 0.0.0.0 (127.0.0.1) port 35439 (#0)
+sanity check 
+> POST /odin/ HTTP/1.1
+> Host: 0.0.0.0:35439
+> User-Agent: curl/7.58.0
+> Accept: */*
+> Content-Type: application/json
+> Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnZpY3R1cyIsImlzcyI6Imh0dHBzOi8vYXV0aC5ob3Qtbm93LmNvbS9hcHAvaW52aWN0dXMiLCJleHAiOjI2NDg2Mzg3NTR9.X0B1IVSv-qSMUb3qwG-2SQrRBFwe_fwQ43yZ-Hhsa0Q
+> Content-Length: 46
+> 
+} [46 bytes data]
+* upload completely sent off: 46 out of 46 bytes
+parse config 
+parse done 
+try  
+view config 
+path:  odin/ view_conf "root"
+
+try view::execute 
+try else view::execute 
+try find_view for else configuration: "root"
+
+response in else view::execute 
+try view::execute 
+try find_view for isobject  configuration: {
+    "configuration" : {
+        "configuration" : {
+            "" : "redirect",
+            "favicon.ico" : "fost.response.404",
+            "odin/" : "odin",
+            "translations/" : "translations"
+        },
+        "headers" : {
+            "__pgdsn" : {
+                "dbname" : "auth",
+                "host" : "hotnow-auth-db",
+                "password" : "example-password",
+                "port" : "5432",
+                "user" : "hotnow"
+            }
+        },
+        "view" : "fost.view.pathprefix"
+    },
+    "view" : "fost.middleware.request"
+}
+
+find_view done {
+    "configuration" : {
+        "configuration" : {
+            "" : "redirect",
+            "favicon.ico" : "fost.response.404",
+            "odin/" : "odin",
+            "translations/" : "translations"
+        },
+        "headers" : {
+            "__pgdsn" : {
+                "dbname" : "auth",
+                "host" : "hotnow-auth-db",
+                "password" : "example-password",
+                "port" : "5432",
+                "user" : "hotnow"
+            }
+        },
+        "view" : "fost.view.pathprefix"
+    },
+    "view" : "fost.middleware.request"
+}
+
+try view::execute 
+try find_view for isobject  configuration: {
+    "configuration" : {
+        "" : "redirect",
+        "favicon.ico" : "fost.response.404",
+        "odin/" : "odin",
+        "translations/" : "translations"
+    },
+    "headers" : {
+        "__pgdsn" : {
+            "dbname" : "auth",
+            "host" : "hotnow-auth-db",
+            "password" : "example-password",
+            "port" : "5432",
+            "user" : "hotnow"
+        }
+    },
+    "view" : "fost.view.pathprefix"
+}
+
+find_view done {
+    "configuration" : {
+        "" : "redirect",
+        "favicon.ico" : "fost.response.404",
+        "odin/" : "odin",
+        "translations/" : "translations"
+    },
+    "headers" : {
+        "__pgdsn" : {
+            "dbname" : "auth",
+            "host" : "hotnow-auth-db",
+            "password" : "example-password",
+            "port" : "5432",
+            "user" : "hotnow"
+        }
+    },
+    "view" : "fost.view.pathprefix"
+}
+
+try view::execute 
+try else view::execute 
+try find_view for else configuration: "odin"
+
+response in else view::execute 
+try view::execute 
+try else view::execute 
+try find_view for else configuration: "odin/unsecure/sql"
+
+response in else view::execute 
+view_for done in else "odin/unsecure/sql"
+
+try Preserve Fost-Request-ID from request
+nullptr at responce pair for   0.0.0.0:35439
+view_for done in else "odin"
+
+try Preserve Fost-Request-ID from request
+nullptr at responce pair for   0.0.0.0:35439
+view_for done in isobject {
+    "configuration" : {
+        "" : "redirect",
+        "favicon.ico" : "fost.response.404",
+        "odin/" : "odin",
+        "translations/" : "translations"
+    },
+    "headers" : {
+        "__pgdsn" : {
+            "dbname" : "auth",
+            "host" : "hotnow-auth-db",
+            "password" : "example-password",
+            "port" : "5432",
+            "user" : "hotnow"
+        }
+    },
+    "view" : "fost.view.pathprefix"
+}
+
+try Preserve Fost-Request-ID from request
+nullptr at responce pair for odin/  0.0.0.0:35439
+view_for done in isobject {
+    "configuration" : {
+        "configuration" : {
+            "" : "redirect",
+            "favicon.ico" : "fost.response.404",
+            "odin/" : "odin",
+            "translations/" : "translations"
+        },
+        "headers" : {
+            "__pgdsn" : {
+                "dbname" : "auth",
+                "host" : "hotnow-auth-db",
+                "password" : "example-password",
+                "port" : "5432",
+                "user" : "hotnow"
+            }
+        },
+        "view" : "fost.view.pathprefix"
+    },
+    "view" : "fost.middleware.request"
+}
+
+try Preserve Fost-Request-ID from request
+nullptr at responce pair for odin/  0.0.0.0:35439
+fost-webserver: ../Boost/boost/1_65_0/gcc/debug/include/boost/smart_ptr/shared_ptr.hpp:734: typename boost::detail::sp_member_access<T>::type boost::shared_ptr<T>::operator->() const [with T = fostlib::mime; typename boost::detail::sp_member_access<T>::type = fostlib::mime*]: Assertion `px != 0' failed.
+* Empty reply from server
+100    46    0     0  100    46      0     81 --:--:-- --:--:-- --:--:--    81
+* Connection #0 to host 0.0.0.0 left intact
+curl: (52) Empty reply from server
+
