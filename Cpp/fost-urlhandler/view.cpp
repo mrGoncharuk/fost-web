@@ -102,10 +102,15 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
     try {
 
         std::pair<boost::shared_ptr<fostlib::mime>, int> response;
-        if (request.method() == "POST")
-          return response;
+        if (request.method() == "POST" && path == "odin/"  ) {
+            std::cout << "skip view::execute at method:  "<< request.method()  << " and path " << " path" << std::endl;
+            return response;
+        }
+        
         boost::shared_ptr<fostlib::mime> *first = new (boost::shared_ptr<fostlib::mime> );
+        int * second = new (int);
         response.first = *first;
+        response.second = *second;
         std::cout << "try view::execute "<< std::endl;
         if (configuration.isobject()) {
             std::cout << "try find_view for isobject  configuration: "<< configuration << std::endl;  
