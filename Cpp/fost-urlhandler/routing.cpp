@@ -32,7 +32,8 @@ bool fostlib::urlhandler::service(fostlib::http::server::request &req) {
         req(response, 400);
         return true;
     }
-
+    std::cout << "req.method: " << req.method() << std:: endl;
+    
     // Now process it
     fostlib::string hostname(req.data()->headers()["Host"].value());
 

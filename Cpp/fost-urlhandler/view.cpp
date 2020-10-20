@@ -13,6 +13,8 @@
 #include <fost/exception/unexpected_nil.hpp>
 #include <iostream>
 
+#include <unistd.h>
+
 namespace {
     typedef fostlib::threadsafe_store<fostlib::urlhandler::view *> view_store;
     view_store &views() {
@@ -85,6 +87,7 @@ const fostlib::urlhandler::view &
                 "Where zero or more than 1 views are found");
         insert(exception.data(), "view-name", name);
         insert(exception.data(), "found", found.size());
+        std::cout << "!! found size: " <<  found.size() << " view-name: " << name  <<std::endl;
         throw exception;
     }
 }
@@ -99,6 +102,8 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
     try {
 
         std::pair<boost::shared_ptr<fostlib::mime>, int> response;
+        if (request.method() == "POST")
+          return response;
         boost::shared_ptr<fostlib::mime> *first = new (boost::shared_ptr<fostlib::mime> );
         response.first = *first;
         std::cout << "try view::execute "<< std::endl;
@@ -106,19 +111,20 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
             std::cout << "try find_view for isobject  configuration: "<< configuration << std::endl;  
             auto view_fn = find_view(
                     view_name(configuration), configuration["configuration"]);
-            std::cout << "find_view done "<< configuration << std::endl; 
+            std::cout << "find_view done for configuration: "<< configuration<< std::endl; 
             response = view_for(view_fn.first)(
                     view_fn.second, path, request, host);
-            std::cout << "view_for done in isobject " <<  std::endl;
+            std::cout << "view_for done in isobject for configuration: "<< configuration  <<  std::endl;
         } else {
+
             std::cout << "try else view::execute " << std::endl;
             auto view_name = coerce<string>(configuration);
             std::cout << "try find_view for else configuration: "<< configuration << std::endl;
             auto to_exec = find_view(view_name);
-            std::cout << "response in else view::execute "<< std::endl;
+            std::cout << "response in else view::execute configuration: "<< configuration<< std::endl;
             response = view_for(to_exec.first)(
                     to_exec.second, path, request, host);
-            std::cout << "view_for done in else "<< std::endl;
+            std::cout << "view_for done in else configuration: "<< configuration << std::endl;
         }
         std::cout << "try Preserve Fost-Request-ID from request"<< std::endl;
 
@@ -126,6 +132,8 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
             std::cout << "nullptr at responce pair for "<< path << " " <<  " " <<  host  << std::endl;
             boost::shared_ptr<fostlib::mime> *f1rst = new (boost::shared_ptr<fostlib::mime> );
             response.first = *f1rst;
+            if (response.first == nullptr) 
+                std::cout << "nullptr persists " << std::endl;
             return  response;
         }
         // Preserve Fost-Request-ID from request
