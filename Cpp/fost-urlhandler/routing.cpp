@@ -55,7 +55,7 @@ bool fostlib::urlhandler::service(fostlib::http::server::request &req) {
                                                    : fostlib::string()];
             std::cout << "view config "<< std::endl;
             auto path = coerce<string>(req.file_spec().underlying()).substr(1);
-            std::cout << "path  "<< std::endl;
+            std::cout << "path:  "<< path <<  std::endl;
             auto resource = view::execute(view_conf, path, req, host(hostname));
             std::cout << "view execute done  "<< std::endl;
             req(*resource.first, resource.second);
