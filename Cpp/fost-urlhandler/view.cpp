@@ -129,9 +129,9 @@ std::pair<boost::shared_ptr<fostlib::mime>, int>
             return  response;
         }
         // Preserve Fost-Request-ID from request
-        // response.first->headers().set(
-        //         "Fost-Request-ID",
-        //         request.data()->headers()["Fost-Request-ID"]);
+        response.first->headers().set(
+                "Fost-Request-ID",
+                request.data()->headers()["Fost-Request-ID"]);
         std::cout << "try return responce"<< std::endl;
         return response;
     } catch (fostlib::exceptions::exception &e) {
